@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Test</title>
+   <script src="code.js"></script>
+   <link rel="stylesheet" href="main.css">
+</head>
+
+<body onload="initializeColors();">
+
+   <h2>Test</h2>
+   
+
+   <center>
+       <div id="refGrid" style="display: table;padding:25px;">
+          <div id="refrow1" style="display: table-row;">      
+            <div id="r11" class="rtile"></div>
+            <div id="r12" class="rtile"></div>
+            <div id="r13" class="rtile"></div>
+          </div>
+
+          <div id="refrow2" style="display: table-row;">
+            <div id="r21" class="rtile"></div>
+            <div id="r22" class="rtile"></div>
+            <div id="r23" class="rtile"></div>
+          </div>
+
+          <div id="refrow3" style="display: table-row;">
+            <div id="r31" class="rtile"></div>
+            <div id="r32" class="rtile"></div>
+            <div id="r33" class="rtile"></div>
+          </div>
+
+       </div>
+
+
+
+
+
+
+
+   <div id="grid" style="display: table;">
+      <div id="row1" style="display: table-row;">
+         <div id="11" onclick="canSwap(11)" class="tile"></div>
+         <div id="12" onclick="canSwap(12)" class="tile"></div>
+         <div id="13" onclick="canSwap(13)" class="tile"></div>
+         <div id="14" onclick="canSwap(14)" class="tile"></div>
+         <div id="15" onclick="canSwap(15)" class="tile"></div>
+      </div>
+      <div id="row2" style="display: table-row;">
+         <div id="21" onclick="canSwap(21)" class="tile"></div>
+         <div id="22" onclick="canSwap(22)" class="outTile"></div>
+         <div id="23" onclick="canSwap(23)" class="outTile"></div>
+         <div id="24" onclick="canSwap(24)" class="outTile"></div>
+         <div id="25" onclick="canSwap(25)" class="tile"></div>
+      </div>
+      <div id="row3" style="display: table-row;">
+         <div id="31" onclick="canSwap(31)" class="tile"></div>
+         <div id="32" onclick="canSwap(32)" class="outTile"></div>
+         <div id="33" onclick="canSwap(33)" class="outTile"></div>
+         <div id="34" onclick="canSwap(34)" class="outTile"></div>
+         <div id="35" onclick="canSwap(35)" class="tile"></div>
+      </div>
+         <div id="row4" style="display: table-row;">
+         <div id="41" onclick="canSwap(41)" class="tile"></div>
+         <div id="42" onclick="canSwap(42)" class="outTile"></div>
+         <div id="43" onclick="canSwap(43)" class="outTile"></div>
+         <div id="44" onclick="canSwap(44)" class="outTile"></div>
+         <div id="45" onclick="canSwap(45)" class="tile"></div>
+      </div>
+         <div id="row5" style="display: table-row;">
+         <div id="51" onclick="canSwap(51)" class="tile"></div>
+         <div id="52" onclick="canSwap(52)" class="tile"></div>
+         <div id="53" onclick="canSwap(53)" class="tile"></div>
+         <div id="54" onclick="canSwap(54)" class="tile"></div>
+         <div id="55" onclick="canSwap(55)" class="tile"></div>
+      </div>
+
+      <div>
+         <h2 id="win"></h2>
+      </div>
+      
+   </div>
+
+   </center>
+</body>
+</html>
