@@ -1,10 +1,14 @@
 //Variables
-var dict = {};
-var rDict={};
-var checkDict={};
+var colorDict = {};
+var refcolorIndex = [];
+var checkDict = {};
+var isBeginning = true;
+var score=0;
+
 
 
 function initializeColors() {
+    
 	randomizeColors()
 	for(i = 0; i < 5; i++){
 		for(j = 0; j < 5; j++){
@@ -14,7 +18,7 @@ function initializeColors() {
 
 			}
 			else{
-				document.getElementById(name_str).style.backgroundColor = dict[name_str];
+				document.getElementById(name_str).style.backgroundColor = colorDict[name_str];
 			}
 			
 		}
@@ -27,10 +31,10 @@ function randomizeColors(){
 	for(i = 0; i < 5; i++){
 		for(j = 0; j < 5; j++){
 			ns = (i + 1).toString() + (j+1).toString();
-			dict[ns] = getRandomColor();
+			colorDict[ns] = getRandomColor();
 		}
 	}
-	dict["55"]="white";
+	colorDict["55"]="white";
 }
 
 
@@ -53,7 +57,7 @@ function setrefColor(){
 				count++;
 			}
 
-			else if(dict[colorIndex]=="white"){
+			else if(colorDict[colorIndex]=="white"){
 				count++;
 				console.log("avoided");
 			} 
@@ -61,8 +65,8 @@ function setrefColor(){
 				checkDict[colorIndex]=1;
 			}
 		}
-
-		rDict[i]=colorIndex;
+		refcolorIndex.push(colorIndex);
+		
 	}		 
 			
 
@@ -70,7 +74,7 @@ function setrefColor(){
 		for(j=0;j<3;j++)
 		{
 			rname_str= "r" + (i+1).toString() + (j+1).toString();
-			document.getElementById(rname_str).style.backgroundColor = dict[rDict[iteration]];
+			document.getElementById(rname_str).style.backgroundColor = colorDict[refcolorIndex[iteration]];
 			iteration++;
 
 		}
@@ -79,15 +83,32 @@ function setrefColor(){
 
 
 function canSwap(identity){
-	if(dict[identity-10]=="white") swap(identity-10,identity);
 
-	else if(dict[identity+10]=="white") swap(identity+10,identity);
+ 	if(isBeginning){
+ 		start();
+ 		isBeginning=false;
+ 	}
 
-	else if(dict[identity-1]=="white") swap(identity-1,identity);
+ 	var par = [];
+ 	var swapped=true;
+ 		 if(colorDict[identity-10]=="white") par=[identity-10,identity];     
 
-	else if(dict[identity+1]=="white") swap(identity+1, identity);
 
-	checkWin();
+	else if(colorDict[identity+10]=="white") par=[identity+10,identity]
+
+	else if(colorDict[identity-1]=="white") par=[identity-1,identity];
+
+	else if(colorDict[identity+1]=="white") par=[identity+1, identity];
+
+	else swapped=false;
+
+	if(swapped){
+
+		swap(par[0],par[1]);
+	    checkWin();
+	    score++;
+
+	} 
 
 }
 
@@ -95,27 +116,67 @@ function canSwap(identity){
 function swap(x,y){
     var a= x.toString();
     var b= y.toString();
-	temp=dict[b];
-	dict[b]=dict[a];
-	dict[a]=temp;
-	document.getElementById(a).style.backgroundColor = dict[a];
-    document.getElementById(b).style.backgroundColor = dict[b];
+	temp=colorDict[b];
+	colorDict[b]=colorDict[a];
+	colorDict[a]=temp;
+	document.getElementById(a).style.backgroundColor = colorDict[a];
+    document.getElementById(b).style.backgroundColor = colorDict[b];
+    score++;
 }
 
 
 function checkWin() {
+
 	for(i=0;i<3;i++) {
 		for(j=0;j<3;j++) {
-			 alpha= (i+1).toString() + (j+1).toString();
-			 beta= "r" + (i+2).toString() + (j+2).toString();
+			 alpha= "r" + (i+1).toString() + (j+1).toString();
+			 beta=  (i+2).toString() + (j+2).toString();
 
 			if(document.getElementById(alpha).style.backgroundColor != document.getElementById(beta).style.backgroundColor) {
-				return
+				
+				return;
 			}
 		}
 	}
-	document.getElementById("win").innerHTML="victory!";
+
+    stop();
+	document.getElementById("win").innerHTML="victory! ";
 	var audio = new Audio('audio_file.mp3');
 	audio.play();
 
+	try {var hScore = localStorage.getItem("highScore");}
+	catch(err){
+
+		localStorage.setItem("highScore",0);
+
+		 hScore=0;
+	}
+	if(score>=hScore)
+	{
+		hScore=score;
+		localStorage.setItem("highScore", hScore);
+	}
+
+	document.getElementById("result").innerHTML="score: " + score.toString() + " time: " + timeElapsed.toString() + " seconds" + " High Score: " + hScore.toString() ;
+
+
+
 }
+
+
+
+var timeElapsed = 0;
+var myTimer;
+
+function tick(){
+    timeElapsed++;
+    document.getElementById("time").innerHTML = "Time Elapsed:" + (timeElapsed).toString();
+}
+function start(){
+    //call the first setInterval
+    myTimer = setInterval(tick, 1000);
+}
+function stop(){
+    clearInterval(myTimer);
+}
+

@@ -10,7 +10,7 @@
 
 <body onload="initializeColors();">
 
-   <h2>Test</h2>
+   <center><h1>PUZZLE MANIA!</h1></center>
    
 
    <center>
@@ -76,13 +76,21 @@
          <div id="53" onclick="canSwap(53)" class="tile"></div>
          <div id="54" onclick="canSwap(54)" class="tile"></div>
          <div id="55" onclick="canSwap(55)" class="tile"></div>
+      </div>     
+   </div>
+     
+     
+     <div id="time" style="padding: 10px"> </div>
+
+
+
+   <button onClick="window.location.reload()">Refresh</button>
+
+   <div>
+         <h2 id="win" ></h2>
       </div>
 
-      <div>
-         <h2 id="win"></h2>
-      </div>
-      
-   </div>
+      <div id="result"></div>
 
    </center>
 </body>
