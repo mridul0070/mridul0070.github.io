@@ -56,7 +56,7 @@ function randomizeColors(){
 
 
 function getRandomColor(){
-	colourArray=["red","blue","orange","green","yellow","violet"];
+	colourArray=["Purple","Gold","DarkRed","DarkGreen","Orange","Navy"];
 	return colourArray[Math.floor(Math.random()*6)];
 }
 
