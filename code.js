@@ -161,7 +161,7 @@ function checkWin() {
 	var audio = new Audio('audio_file.mp3');
 	audio.play();
 
-	var score= (1/moves)*(1000)
+	var score= ((1/moves)*(1000)).toFixed(2);
 
 	try {var hScore = localStorage.getItem("highScore");}
 	catch(err){
@@ -180,7 +180,7 @@ function checkWin() {
 
 
 
-	document.getElementById("result").innerHTML = "moves: " + moves.toString() + "score: " + score.toString() + " time: " + timeElapsed.toString() + " seconds" + " Highscore: " + hScore.toString() ;
+	document.getElementById("result").innerHTML = " moves: " + moves.toString() + " score: " + score.toString() + " time: " + timeElapsed.toString() + " seconds" + " Highscore: " + hScore.toString() ;
 
 
 
