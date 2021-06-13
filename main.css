@@ -21,11 +21,11 @@
 }
 
 
-@media only screen and (max-height: 1000px){
+@media only screen and (max-height: 768px){
 
-[class*="whole"]{
+.whole{
 
-  height: 50%;
+  height: 100%;
 }
 
 
