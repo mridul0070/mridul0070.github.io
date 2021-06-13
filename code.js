@@ -174,13 +174,16 @@ function checkWin() {
 	{
 		hScore=score;
 		localStorage.setItem("highScore", hScore);
+		var pName = window.prompt("enter player name");
+		localStorage.setItem("highscorer",pName);
+		 var hScorer = localStorage.getItem("highscorer");
+
 	}
 
 	
 
 
-
-	document.getElementById("result").innerHTML = " moves: " + moves.toString()  +  "   score:   " + score.toString() + "   time:   " + (timeElapsed/100).toString() + " seconds" + "   Highscore:   " + hScore.toString() ;
+	document.getElementById("result").innerHTML = " moves: " + moves.toString()  +  " |  score:   " + score.toString() + " |  time:   " + (timeElapsed/100).toString() + " seconds" + " |  Highscore:   " + hScore.toString() + "(" + hScorer + ")" ;
 
 
 
