@@ -56,7 +56,7 @@ function randomizeColors(){
 
 
 function getRandomColor(){
-	colourArray=["Purple","Gold","DarkRed","DarkGreen","Orange","Navy"];
+	colourArray=["Purple","Gold","DarkRed","DarkGreen","DodgerBlue","Navy"];
 	return colourArray[Math.floor(Math.random()*6)];
 }
 
@@ -180,7 +180,7 @@ function checkWin() {
 
 
 
-	document.getElementById("result").innerHTML = " moves: " + moves.toString() + " score: " + score.toString() + " time: " + timeElapsed.toString() + " seconds" + " Highscore: " + hScore.toString() ;
+	document.getElementById("result").innerHTML = " moves: " + moves.toString()  +  "   score:   " + score.toString() + "   time:   " + (timeElapsed/100).toString() + " seconds" + "   Highscore:   " + hScore.toString() ;
 
 
 
@@ -193,11 +193,11 @@ var myTimer;
 
 function tick(){
     timeElapsed++;
-    document.getElementById("time").innerHTML = "Time Elapsed:" + (timeElapsed).toString();
+    document.getElementById("time").innerHTML = "TIME ELAPSED:" + ((timeElapsed/100).toFixed(2)).toString();
 }
 function start(){
     //call the first setInterval
-    myTimer = setInterval(tick, 1000);
+    myTimer = setInterval(tick,10);
 }
 function stop(){
     clearInterval(myTimer);
