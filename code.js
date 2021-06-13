@@ -122,7 +122,7 @@ function canSwap(identity){
 	if(swapped){
 
 		swap(par[0],par[1]);
-	   setTimeout(checkWin , 250) ; // checkWin();
+	    checkWin();
 	    moves++;
 
 	} 
@@ -199,7 +199,7 @@ function tick(){
     document.getElementById("time").innerHTML = "TIME ELAPSED:" + ((timeElapsed/100).toFixed(2)).toString();
 }
 function start(){
-    //call the first setInterval
+   
     myTimer = setInterval(tick,10);
 }
 function stop(){
