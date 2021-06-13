@@ -122,7 +122,7 @@ function canSwap(identity){
 	if(swapped){
 
 		swap(par[0],par[1]);
-	    checkWin();
+	   setTimeout(checkWin , 250) ; // checkWin();
 	    moves++;
 
 	} 
